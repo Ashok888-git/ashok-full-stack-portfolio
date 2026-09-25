@@ -1,0 +1,89 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            cursor: none;
+            background-color: #FFFDF5;
+            background-image:
+                radial-gradient(#000 1px, transparent 1px),
+                linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+            background-size: 40px 40px, 100px 100px, 100px 100px;
+        }
+
+        #cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 9999;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 2px solid black;
+            border-radius: 999px;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width .2s, height .2s, background-color .2s, transform .1s;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            scrollbar-width: none;
+        }
+
+        .marquee-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: scroll 28s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .6s cubic-bezier(.25, 1, .5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glitch-hover:hover {
+            animation: glitch .3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 3px black;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+
+            #cursor {
+                display: none;
+            }
+        }
