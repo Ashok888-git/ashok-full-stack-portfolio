@@ -96,6 +96,51 @@ body {
     /* Firefox */
 }
 
+/* Profile card — full-bleed photo (fills entire card, no circle) */
+.profile-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+    z-index: 0;
+}
+
+.profile-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.05) 35%,
+            rgba(0, 0, 0, 0.75) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.profile-card-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+}
+
+.profile-card-content p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.profile-exe {
+    z-index: 3;
+}
+
 /* Reveal Animation */
 .reveal {
     opacity: 0;
